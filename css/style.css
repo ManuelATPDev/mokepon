@@ -1,0 +1,200 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100&family=Tilt+Neon&display=swap');
+
+body{
+    font-family: 'Poppins', sans-serif;
+    
+    background-image: white;
+}
+
+body::before{
+    content: "";
+    background-image: url("../assets/fondo.png");
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+label {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.titulo {
+    color: black;
+    font-size: 60px; /** Se trabaja con multiplos de 4**/
+}
+
+.texto {
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+    background: white;
+    border-radius: 20px;
+    width: 500px;
+    padding: 20px;
+    margin: 10px;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    text-align: center;
+}
+
+.reglas {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    background: #0802A3;
+    border-radius: 20px;
+    width: 450px;
+    padding: 20px;
+    margin: 10px;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    justify-items: center;
+    align-items: center;
+}
+
+#mensajes {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    background: #0802A3;
+    padding: 20px;
+    width: 280px;
+    height: 100px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#seleccionar-mascota{
+    height: 90vh;    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.tarjetas {
+    display: flex;
+    gap: 10px;
+}
+
+.tarjeta-de-mokepon {
+    color: white;
+    width: 180px;
+    height: 100px;
+    padding: 10px; /*caja externa del contenido*/
+    box-sizing: border-box;
+    margin: 10px; /*margen externo entre ellos*/
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    position: relative; /*definir la posicion padre*/
+    cursor: pointer;
+}
+
+.tarjeta-de-mokepon img {
+    width: 70px;
+    border-radius: 35px;
+}
+
+.tarjeta-de-mokepon::after {
+    content: "";
+    background-color: #ff9900;
+    position: absolute; /*se posiciona con el primer elemento padre*/
+    left: 0;
+    top: calc(100% + 10px) /* 110% */; /*ocupa el 100% del espacio superior mas 10 px*/
+    width: 100%;
+    height: 8px;
+    border-radius: 20px;
+
+    opacity: 0; /*transparencia va desde 0 a 1*/
+    transition: opacity 0.3s;
+}
+
+.elemento-agua {
+    background-color: #3876BF;
+}
+
+.elemento-fuego {
+    background-color: #c33737;
+}
+
+.elemento-tierra {
+    background-color: #9A4444;
+}
+
+input {
+    display: none;
+}
+
+input:checked+label::after,
+.tarjeta-de-mokepon:hover::after {
+  opacity: 0.8;
+}
+
+#seleccionar-ataque {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+button {
+    font-family: 'Tilt Neon', sans-serif;
+    background-color: black;
+    color: white;
+    width: 100px;
+    height: 40px;
+    padding: 10px;
+    margin: 10px;
+    border: none; 
+    border-radius: 20px;
+    cursor: pointer;
+    align-items: center;
+}
+
+#boton-reiniciar {
+    background-color: #00cc00;
+}
+
+#boton-mascota {
+    width: 140px;
+    background-color: #FF6969;
+    margin-top: 30px;
+}
+
+#boton-mascota:hover {
+    background-color: #ff9900;
+}
+
+#boton-fuego:hover {
+    background-color: #ff3300;
+}
+
+#boton-agua:hover {
+    background-color: #0802A3;
+}
+
+#boton-tierra:hover {
+    background-color: #993300;
+}
+
+@media (max-width: 800px) {
+    .tarjetas {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    button {
+        display: flex;
+        flex-direction: column;
+    }
+}

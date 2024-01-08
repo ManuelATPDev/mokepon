@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MOKEPON! 🔥💧🌱</title> <!--Titulo de la pestaña-->
+    <link rel="shortcut icon" href="assets/logo.png"> <!--Imagen de la pestaña-->
+    <link rel="stylesheet" href="./css/style.css">
+  </head>
+  <body>
+    <section id="seleccionar-mascota">
+      <h1 class="titulo">Mokepon</h1>
+
+      <h2 class="subtitulo">Elige a tu mascota:</h2>
+
+      <div id="contenedor-tarjetas" class="tarjetas">
+        
+      </div>
+    
+      <button id="boton-mascota">Seleccionar</button>
+    </section>
+
+    <section id="seleccionar-ataque">
+      <h1 class="titulo">MOKEPON</h1>
+
+      <h2 class="subtitulo">Elige tus ataques:</h2>
+      <h4>Debes seleccionar los 5 ataques en orden</h4>
+
+      <div id="contenedor-ataques">
+        
+      </div>
+
+      <div class="reglas">
+        <div>
+          Jerarquía de poder
+        </div>
+        <div>
+          Fuego 🔥 >> Tierra 🌱
+          Agua 💧 >> Fuego 🔥
+          Tierra 🌱 >> Agua 💧
+        </div>
+      </div>
+
+      <div id="mensajes">
+        <p id="resultado">¡Mucha suerte!</p>
+        <section id="reiniciar">
+          <button id="boton-reiniciar">Reiniciar</button>
+        </section>
+      </div> 
+
+      <div class="texto">
+        <div>
+          Tienes : <p id="vidas-jugador">0</p> victorias</p>
+          <label class="vidas-jugador">
+            <p>Tu mascota : <p id="nombre-mascota-jugador"></p>
+          </label>
+          <label id="label-ataques-del-jugador">
+            Ataques usados:
+          </label>
+          <div id="ataques-del-jugador"></div>
+        </div>
+        <div>
+          El enemigo tiene : <p id="vidas-enemigo">0</p> victorias</p>  
+          <label class="vidas-enemigo">
+            <p>La mascota del enemigo : <p id="nombre-mascota-enemigo"></p> 
+          </label>
+          <label id="label-ataques-del-enemigo">
+            Ataques usados:
+          </label>
+          <div id="ataques-del-enemigo"></div>
+        </div>
+      </div>
+    </section>
+    <script src="./js/mokepon.js"></script>
+  </body>
+</html>
