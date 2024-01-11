@@ -157,6 +157,18 @@ input:checked+label::after,
     background-color: #3876BF;
 }
 
+.cruceta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.izquierda-derecha {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
 button {
     font-family: 'Tilt Neon', sans-serif;
     background-color: black;
@@ -169,12 +181,19 @@ button {
     border-radius: 20px;
     cursor: pointer;
     align-items: center;
-
 }
 
-#boton-mover {
-    height: 55px;
+.boton-mover {
+    width: 80px;
+    background-color: #f66767;
+    display: flex;
+    justify-content: center;
 }
+
+.boton-mover:hover {
+    background-color: #ff9900;
+}
+
 
 #boton-reiniciar {
     background-color: #00cc00;

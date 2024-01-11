@@ -162,6 +162,7 @@ function seleccionarMascotaJugador(){
     }
 
     extraerAtaques(mascotaJugador)
+    dibujarPersonaje()
     seleccionarMascotaEnemigo()
 }
 
@@ -306,16 +307,51 @@ function aleatorio(min, max){
 
 function dibujarPersonaje(){
     lienzo.clearRect(0, 0, mapa.width, mapa.height)
-    lienzo.drawImage(
-        aquax.mapaFoto,
-        aquax.x,
-        aquax.y,
-        aquax.ancho,
-        aquax.alto
-    )
+    for (let i = 0; i < mokepones.length; i++) {
+        if (mascotaJugador == mokepones[i].nombre){
+            lienzo.drawImage(
+                mokepones[i].mapaFoto,
+                mokepones[i].x,
+                mokepones[i].y,
+                mokepones[i].ancho,
+                mokepones[i].alto
+            )
+        }
+    }
 }
 
-function moverAquax() {
-    aquax.x = aquax.x + 5
+function moverArriba() {
+    for (let i = 0; i < mokepones.length; i++) {
+        if (mascotaJugador == mokepones[i].nombre){
+            mokepones[i].y = mokepones[i].y - 5 
+        }
+    }
+    dibujarPersonaje()
+}
+
+function moverDerecha() {
+    for (let i = 0; i < mokepones.length; i++) {
+        if (mascotaJugador == mokepones[i].nombre){
+            mokepones[i].x = mokepones[i].x + 5 
+        }
+    }
+    dibujarPersonaje()
+}
+
+function moverIzquierda() {
+    for (let i = 0; i < mokepones.length; i++) {
+        if (mascotaJugador == mokepones[i].nombre){
+            mokepones[i].x = mokepones[i].x - 5 
+        }
+    }
+    dibujarPersonaje()
+}
+
+function moverAbajo() {
+    for (let i = 0; i < mokepones.length; i++) {
+        if (mascotaJugador == mokepones[i].nombre){
+            mokepones[i].y = mokepones[i].y + 5 
+        }
+    }
     dibujarPersonaje()
 }
