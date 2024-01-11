@@ -26,30 +26,30 @@
       <canvas id="mapa"></canvas>
       <div id="contenedor-botones-movimiento" class="cruceta">
         
-        <button id="boton-mover-arriba" class="boton-mover" onclick="moverArriba()">
+        <button id="boton-mover-arriba" class="boton-mover" onmousedown="moverArriba()" onmouseup="detenerMovimiento()">
           <img src="assets/boton-flecha-arriba.png" 
           height="30px"
           width="30px"
           alt="Derecha">
         </button>
         
-        <div class="izquierda-derecha">
+        <div class="izquierda-abajo-derecha">
 
-          <button id="boton-mover-derecha" class="boton-mover" onclick="moverDerecha()">
+          <button id="boton-mover-derecha" class="boton-mover" onmousedown="moverDerecha()" onmouseup="detenerMovimiento()">
             <img src="assets/boton-flecha-derecha.png" 
             height="30px"
             width="30px"
             alt="Derecha">
           </button>
 
-          <button id="boton-mover-abajo" class="boton-mover" onclick="moverAbajo()">
+          <button id="boton-mover-abajo" class="boton-mover" onmousedown="moverAbajo()" onmouseup="detenerMovimiento()">
             <img src="assets/boton-flecha-abajo.png" 
               height="30px"
               width="30px"
               alt="Abajo">
           </button>  
 
-          <button id="boton-mover-izquierda" class="boton-mover" onclick="moverIzquierda()">
+          <button id="boton-mover-izquierda" class="boton-mover" onmousedown="moverIzquierda()" onmouseup="detenerMovimiento()">
             <img src="assets/boton-flecha-izquierda.png" 
               height="30px"
               width="30px" 

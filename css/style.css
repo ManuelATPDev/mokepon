@@ -164,7 +164,7 @@ input:checked+label::after,
     margin-top: 30px;
 }
 
-.izquierda-derecha {
+.izquierda-abajo-derecha {
     display: flex;
     flex-direction: row-reverse;
 }

@@ -46,6 +46,7 @@ let mascotaJugador
 let victoriasJugador = 0
 let victoriasEnemigo = 0
 let lienzo = mapa.getContext("2d")
+let intervalo
 
 class Mokepon {
     constructor(nombre, foto, vida, elemento) {
@@ -60,6 +61,8 @@ class Mokepon {
         this.alto = 80
         this.mapaFoto = new Image()
         this.mapaFoto.src = foto
+        this.velocidadX = 0
+        this.velocidadY = 0
     }
 }
 
@@ -139,6 +142,7 @@ function seleccionarMascotaJugador(){
     //sectionAtaque.style.display = "flex"
 
     sectionVerMapa.style.display = "flex"
+    intervalo = setInterval(dibujarPersonaje, 50)
     //let imagenDeAquax = new Image()
     //imagenDeAquax.src = aquax.foto
     //lienzo.fillRect(5,15,20,40)
@@ -309,6 +313,10 @@ function dibujarPersonaje(){
     lienzo.clearRect(0, 0, mapa.width, mapa.height)
     for (let i = 0; i < mokepones.length; i++) {
         if (mascotaJugador == mokepones[i].nombre){
+            
+            mokepones[i].x = mokepones[i].x + mokepones[i].velocidadX
+            mokepones[i].y = mokepones[i].y + mokepones[i].velocidadY
+            
             lienzo.drawImage(
                 mokepones[i].mapaFoto,
                 mokepones[i].x,
@@ -323,35 +331,40 @@ function dibujarPersonaje(){
 function moverArriba() {
     for (let i = 0; i < mokepones.length; i++) {
         if (mascotaJugador == mokepones[i].nombre){
-            mokepones[i].y = mokepones[i].y - 5 
+            mokepones[i].velocidadY =  -5 
         }
     }
-    dibujarPersonaje()
 }
 
 function moverDerecha() {
     for (let i = 0; i < mokepones.length; i++) {
         if (mascotaJugador == mokepones[i].nombre){
-            mokepones[i].x = mokepones[i].x + 5 
+            mokepones[i].velocidadX = 5 
         }
     }
-    dibujarPersonaje()
 }
 
 function moverIzquierda() {
     for (let i = 0; i < mokepones.length; i++) {
         if (mascotaJugador == mokepones[i].nombre){
-            mokepones[i].x = mokepones[i].x - 5 
+            mokepones[i].velocidadX =  -5 
         }
     }
-    dibujarPersonaje()
 }
 
 function moverAbajo() {
     for (let i = 0; i < mokepones.length; i++) {
         if (mascotaJugador == mokepones[i].nombre){
-            mokepones[i].y = mokepones[i].y + 5 
+            mokepones[i].velocidadY = 5 
         }
     }
-    dibujarPersonaje()
+}
+
+function detenerMovimiento() {
+    for (let i = 0; i < mokepones.length; i++) {
+        if (mascotaJugador == mokepones[i].nombre){
+            mokepones[i].velocidadX = 0 
+            mokepones[i].velocidadY = 0
+        }
+    }
 }
