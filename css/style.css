@@ -146,6 +146,17 @@ input:checked+label::after,
     align-items: center;
 }
 
+#ver-mapa {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#mapa {
+    border: 2px solid black;
+    background-color: #3876BF;
+}
+
 button {
     font-family: 'Tilt Neon', sans-serif;
     background-color: black;

@@ -45,6 +45,7 @@ let botones = []
 let mascotaJugador
 let victoriasJugador = 0
 let victoriasEnemigo = 0
+let lienzo = mapa.getContext("2d")
 
 class Mokepon {
     constructor(nombre, foto, vida, elemento) {
@@ -132,6 +133,16 @@ function seleccionarMascotaJugador(){
     //sectionAtaque.style.display = "flex"
 
     sectionVerMapa.style.display = "flex"
+    let imagenDeAquax = new Image()
+    imagenDeAquax.src = aquax.foto
+    //lienzo.fillRect(5,15,20,40)
+    lienzo.drawImage(
+        imagenDeAquax,
+        20,
+        40,
+        100,
+        100
+    )
 
     if(inputAquax.checked){
         spanMascotaJugador.innerHTML = inputAquax.id
