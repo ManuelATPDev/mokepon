@@ -23,6 +23,9 @@ const contenedorTarjetas = document.getElementById('contenedor-tarjetas')
 
 const contenedorAtaques = document.getElementById('contenedor-ataques')
 
+const sectionVerMapa = document.getElementById('ver-mapa')
+const mapa = document.getElementById('mapa')
+
 let mokepones = []
 let ataqueJugador = []
 let indexAtaqueJugador
@@ -100,6 +103,8 @@ function iniciarJuego(){
     labelataquesDelJugador.style.display = "none"
     labelataquesDelEnemigo.style.display = "none"
 
+    sectionVerMapa.style.display = "none"
+
     mokepones.forEach((mokepon) => {
         opcionDeMokepones = `
         <input type="radio" name="mascota" id=${mokepon.nombre} />
@@ -124,7 +129,9 @@ function iniciarJuego(){
 
 function seleccionarMascotaJugador(){
     sectionSeleccionarMascota.style.display = "none"
-    sectionAtaque.style.display = "flex"
+    //sectionAtaque.style.display = "flex"
+
+    sectionVerMapa.style.display = "flex"
 
     if(inputAquax.checked){
         spanMascotaJugador.innerHTML = inputAquax.id
