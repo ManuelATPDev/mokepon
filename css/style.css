@@ -169,6 +169,11 @@ button {
     border-radius: 20px;
     cursor: pointer;
     align-items: center;
+
+}
+
+#boton-mover {
+    height: 55px;
 }
 
 #boton-reiniciar {

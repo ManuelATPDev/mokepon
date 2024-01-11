@@ -54,6 +54,12 @@ class Mokepon {
         this.vida = vida
         this.elemento = elemento
         this.ataques = []
+        this.x = 20
+        this.y = 30
+        this.ancho = 80
+        this.alto = 80
+        this.mapaFoto = new Image()
+        this.mapaFoto.src = foto
     }
 }
 
@@ -133,16 +139,9 @@ function seleccionarMascotaJugador(){
     //sectionAtaque.style.display = "flex"
 
     sectionVerMapa.style.display = "flex"
-    let imagenDeAquax = new Image()
-    imagenDeAquax.src = aquax.foto
+    //let imagenDeAquax = new Image()
+    //imagenDeAquax.src = aquax.foto
     //lienzo.fillRect(5,15,20,40)
-    lienzo.drawImage(
-        imagenDeAquax,
-        20,
-        40,
-        100,
-        100
-    )
 
     if(inputAquax.checked){
         spanMascotaJugador.innerHTML = inputAquax.id
@@ -305,3 +304,18 @@ function aleatorio(min, max){
     return Math.floor(Math.random()*(max - min + 1)+min)
 }
 
+function dibujarPersonaje(){
+    lienzo.clearRect(0, 0, mapa.width, mapa.height)
+    lienzo.drawImage(
+        aquax.mapaFoto,
+        aquax.x,
+        aquax.y,
+        aquax.ancho,
+        aquax.alto
+    )
+}
+
+function moverAquax() {
+    aquax.x = aquax.x + 5
+    dibujarPersonaje()
+}
