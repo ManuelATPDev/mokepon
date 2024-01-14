@@ -26,6 +26,14 @@ label {
 .titulo {
     color: black;
     font-size: 60px; /** Se trabaja con multiplos de 4**/
+    text-align: center;
+}
+
+.subtitulo {
+    text-align: center;
+    color: black;
+    font-size: 20px; /** Se trabaja con multiplos de 4**/
+    text-align: center;
 }
 
 .texto {
