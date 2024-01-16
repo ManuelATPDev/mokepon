@@ -26,6 +26,7 @@ const contenedorAtaques = document.getElementById('contenedor-ataques')
 const sectionVerMapa = document.getElementById('ver-mapa')
 const mapa = document.getElementById('mapa')
 
+let jugadorId = null
 let mokepones = []
 let ataqueJugador = []
 let indexAtaqueJugador
@@ -198,6 +199,21 @@ function iniciarJuego(){
     botonMascotaJugador.addEventListener('click', seleccionarMascotaJugador)
 
     botonReiniciar.addEventListener('click', reiniciarJuego)
+
+    unirseAlJuego()
+}
+
+function unirseAlJuego() {
+    fetch("http://localhost:8080/unirse")
+        .then(function (res) {
+            if (res.ok) {
+                res.text()
+                    .then(function (respuesta) {
+                        jugadorId = respuesta
+                        console.log(jugadorId);
+                    })
+            }
+        })
 }
 
 function seleccionarMascotaJugador(){
@@ -226,12 +242,25 @@ function seleccionarMascotaJugador(){
         extraerAtaques(mascotaJugador)
         obtenerMokepon()
         dibujarCanvas()
+        seleccionarMokepon(mascotaJugador)
     } else{
         alert('Debes seleccionar una mascota')
         sectionSeleccionarMascota.style.display = "flex"
         sectionAtaque.style.display = "none"
         sectionVerMapa.style.display = "none"
     }
+}
+
+function seleccionarMokepon(mascotaJugador) {
+    fetch(`http://localhost:8080/mokepon/${jugadorId}`, {
+        method: "post",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            mokepon: mascotaJugador
+        })
+    })
 }
 
 function extraerAtaques(mascotaJugador) {
@@ -386,6 +415,9 @@ function dibujarCanvas(){
     )
 
     mokeponSeleccionadoJugador.pintarMokepon()
+
+    enviarPosicion(mokeponSeleccionadoJugador.x, mokeponSeleccionadoJugador.y)
+
     aquaxEnemigo.pintarMokepon()
     hydraxEnemigo.pintarMokepon()
     terraxEnemigo.pintarMokepon()
@@ -398,6 +430,27 @@ function dibujarCanvas(){
         revisarColision(terraxEnemigo)
         revisarColision(pyraxEnemigo)
     }
+}
+
+function enviarPosicion(x, y) {
+    fetch(`http://localhost:8080/mokepon/${jugadorId}/posicion`, {
+        method: "post",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            x, //es lo mismo que decir x: x
+            y
+        })
+    })
+    .then(function (res) {
+        if (res.ok) {
+            res.json()
+                .then(function({ enemigos }) {
+                    console.log(enemigos);
+                })
+        }
+    })
 }
 
 function moverArriba() {
