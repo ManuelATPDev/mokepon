@@ -65,16 +65,17 @@ mapa.width = anchoMapa - 20
 mapa.height = alturaBuscada
 
 class Mokepon {
-    constructor(nombre, foto, vida, elemento, fotoMapa, x = 10, y = 10) {
+    constructor(nombre, foto, vida, elemento, fotoMapa, id = null) {
+        this.id = id
         this.nombre = nombre
         this.foto = foto
         this.vida = vida
         this.elemento = elemento
         this.ataques = []
-        this.x = x
-        this.y = y
         this.ancho = 90
         this.alto = 90
+        this.x = aleatorio(0, mapa.width - this.ancho)
+        this.y = aleatorio(0, mapa.height - this.alto)
         this.mapaFoto = new Image()
         this.mapaFoto.src = fotoMapa
         this.velocidadX = 0
@@ -97,76 +98,43 @@ let pyrax = new Mokepon('Pyrax', 'assets/Pyrax.jpeg', 3, 'fuego', 'assets/PyraxI
 let terrax = new Mokepon('Terrax', 'assets/Terrax.jpeg', 3, 'tierra', 'assets/TerraxIcono.png')
 let hydrax = new Mokepon('Hydrax', 'assets/Hydrax.jpeg', 3, 'agua', 'assets/HydraxIcono.png')
 
-let aquaxEnemigo = new Mokepon('Aquax', 'assets/Aquax.jpeg', 3, 'agua', 'assets/AquaxIcono.png', 90, 220)
-let hydraxEnemigo = new Mokepon('Hydrax', 'assets/Hydrax.jpeg', 3, 'agua', 'assets/HydraxIcono.png', 280, 120)
-let pyraxEnemigo = new Mokepon('Pyrax', 'assets/Pyrax.jpeg', 3, 'fuego', 'assets/PyraxIcono.png', 400, 170)
-let terraxEnemigo = new Mokepon('Terrax', 'assets/Terrax.jpeg', 3, 'tierra', 'assets/TerraxIcono.png', 200, 50)
 
-aquax.ataques.push(
+const aquaxAtaques = [
     { nombre: 'Agua 💧', id: 'boton-agua', elemento: 'agua' },
     { nombre: 'Agua 💧', id: 'boton-agua', elemento: 'agua' },
     { nombre: 'Agua 💧', id: 'boton-agua', elemento: 'agua' },
     { nombre: 'Fuego 🔥', id: 'boton-fuego', elemento: 'fuego' },
     { nombre: 'Tierra 🌱', id: 'boton-tierra', elemento: 'tierra' },
-)
+]
 
-pyrax.ataques.push(
-    { nombre: 'Fuego 🔥', id: 'boton-fuego', elemento: 'fuego' },
-    { nombre: 'Fuego 🔥', id: 'boton-fuego', elemento: 'fuego' },
-    { nombre: 'Fuego 🔥', id: 'boton-fuego', elemento: 'fuego' },
+const hydraxAtaques = [
     { nombre: 'Agua 💧', id: 'boton-agua', elemento: 'agua' },
+    { nombre: 'Agua 💧', id: 'boton-agua', elemento: 'agua' },
+    { nombre: 'Agua 💧', id: 'boton-agua', elemento: 'agua' },
+    { nombre: 'Fuego 🔥', id: 'boton-fuego', elemento: 'fuego' },
     { nombre: 'Tierra 🌱', id: 'boton-tierra', elemento: 'tierra' },
-)
+]
 
-terrax.ataques.push(
-    { nombre: 'Tierra 🌱', id: 'boton-tierra', elemento: 'tierra' },
-    { nombre: 'Tierra 🌱', id: 'boton-tierra', elemento: 'tierra' },
-    { nombre: 'Tierra 🌱', id: 'boton-tierra', elemento: 'tierra' },
-    { nombre: 'Agua 💧', id: 'boton-agua', elemento: 'agua' },
+const pyraxAtaques = [
     { nombre: 'Fuego 🔥', id: 'boton-fuego', elemento: 'fuego' },
-    
-)
+    { nombre: 'Fuego 🔥', id: 'boton-fuego', elemento: 'fuego' },
+    { nombre: 'Fuego 🔥', id: 'boton-fuego', elemento: 'fuego' },
+    { nombre: 'Agua 💧', id: 'boton-agua', elemento: 'agua' },
+    { nombre: 'Tierra 🌱', id: 'boton-tierra', elemento: 'tierra' },
+]
 
-hydrax.ataques.push(
-    { nombre: 'Agua 💧', id: 'boton-agua', elemento: 'agua' },
-    { nombre: 'Agua 💧', id: 'boton-agua', elemento: 'agua' },
-    { nombre: 'Agua 💧', id: 'boton-agua', elemento: 'agua' },
-    { nombre: 'Fuego 🔥', id: 'boton-fuego', elemento: 'fuego' },
+const terraxAtaques = [
     { nombre: 'Tierra 🌱', id: 'boton-tierra', elemento: 'tierra' },
-)
+    { nombre: 'Tierra 🌱', id: 'boton-tierra', elemento: 'tierra' },
+    { nombre: 'Tierra 🌱', id: 'boton-tierra', elemento: 'tierra' },
+    { nombre: 'Agua 💧', id: 'boton-agua', elemento: 'agua' },
+    { nombre: 'Fuego 🔥', id: 'boton-fuego', elemento: 'fuego' },  
+]
 
-aquaxEnemigo.ataques.push(
-    { nombre: 'Agua 💧', id: 'boton-agua', elemento: 'agua' },
-    { nombre: 'Agua 💧', id: 'boton-agua', elemento: 'agua' },
-    { nombre: 'Agua 💧', id: 'boton-agua', elemento: 'agua' },
-    { nombre: 'Fuego 🔥', id: 'boton-fuego', elemento: 'fuego' },
-    { nombre: 'Tierra 🌱', id: 'boton-tierra', elemento: 'tierra' },
-)
-
-pyraxEnemigo.ataques.push(
-    { nombre: 'Fuego 🔥', id: 'boton-fuego', elemento: 'fuego' },
-    { nombre: 'Fuego 🔥', id: 'boton-fuego', elemento: 'fuego' },
-    { nombre: 'Fuego 🔥', id: 'boton-fuego', elemento: 'fuego' },
-    { nombre: 'Agua 💧', id: 'boton-agua', elemento: 'agua' },
-    { nombre: 'Tierra 🌱', id: 'boton-tierra', elemento: 'tierra' },
-)
-
-terraxEnemigo.ataques.push(
-    { nombre: 'Tierra 🌱', id: 'boton-tierra', elemento: 'tierra' },
-    { nombre: 'Tierra 🌱', id: 'boton-tierra', elemento: 'tierra' },
-    { nombre: 'Tierra 🌱', id: 'boton-tierra', elemento: 'tierra' },
-    { nombre: 'Agua 💧', id: 'boton-agua', elemento: 'agua' },
-    { nombre: 'Fuego 🔥', id: 'boton-fuego', elemento: 'fuego' },
-    
-)
-
-hydraxEnemigo.ataques.push(
-    { nombre: 'Agua 💧', id: 'boton-agua', elemento: 'agua' },
-    { nombre: 'Agua 💧', id: 'boton-agua', elemento: 'agua' },
-    { nombre: 'Agua 💧', id: 'boton-agua', elemento: 'agua' },
-    { nombre: 'Fuego 🔥', id: 'boton-fuego', elemento: 'fuego' },
-    { nombre: 'Tierra 🌱', id: 'boton-tierra', elemento: 'tierra' },
-)
+aquax.ataques.push(...aquaxAtaques)
+pyrax.ataques.push(...pyraxAtaques)
+hydrax.ataques.push(...hydraxAtaques)
+terrax.ataques.push(...terraxAtaques)
 
 mokepones.push(aquax,pyrax,terrax,hydrax)
 
@@ -418,17 +386,10 @@ function dibujarCanvas(){
 
     enviarPosicion(mokeponSeleccionadoJugador.x, mokeponSeleccionadoJugador.y)
 
-    aquaxEnemigo.pintarMokepon()
-    hydraxEnemigo.pintarMokepon()
-    terraxEnemigo.pintarMokepon()
-    pyraxEnemigo.pintarMokepon()
+   
 
     if(mokeponSeleccionadoJugador.velocidadX !== 0 || mokeponSeleccionadoJugador.velocidadY !== 0) {
         detenerEnBorde()
-        revisarColision(aquaxEnemigo)
-        revisarColision(hydraxEnemigo)
-        revisarColision(terraxEnemigo)
-        revisarColision(pyraxEnemigo)
     }
 }
 
@@ -446,8 +407,26 @@ function enviarPosicion(x, y) {
     .then(function (res) {
         if (res.ok) {
             res.json()
-                .then(function({ enemigos }) {
-                    console.log(enemigos);
+                .then(function ({ enemigos }) {
+                    console.log(enemigos)
+                    enemigos.forEach(function (enemigo) {
+                        let mokeponEnemigo = null
+                        const nombreMokeponEnemigo = enemigo.mokepon.nombre || ""
+                        if (nombreMokeponEnemigo === "Aquax") {
+                            mokeponEnemigo = new Mokepon('Aquax', 'assets/Aquax.jpeg', 3, 'agua', 'assets/AquaxIcono.png')
+                        } else if (nombreMokeponEnemigo === "Hydrax") {
+                            mokeponEnemigo = new Mokepon('Hydrax', 'assets/Hydrax.jpeg', 3, 'agua', 'assets/HydraxIcono.png')
+                        } else if (nombreMokeponEnemigo === "Pyrax"){
+                            mokeponEnemigo = new Mokepon('Pyrax', 'assets/Pyrax.jpeg', 3, 'fuego', 'assets/PyraxIcono.png')
+                        } else if (nombreMokeponEnemigo === "Terrax"){
+                            mokeponEnemigo = new Mokepon('Terrax', 'assets/Terrax.jpeg', 3, 'tierra', 'assets/TerraxIcono.png')
+                        }
+
+                        mokeponEnemigo.x = enemigo.x
+                        mokeponEnemigo.y = enemigo.y
+
+                        mokeponEnemigo.pintarMokepon()
+                    })
                 })
         }
     })
