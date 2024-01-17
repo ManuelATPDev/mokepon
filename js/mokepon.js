@@ -52,15 +52,15 @@ let mapaBackground = new Image()
 mapaBackground.src = './assets/mokemap.png'
 let alturaBuscada
 let anchoMapa = window.innerWidth - 20
-const anchoMaximoMapa = 520
+const anchoMaximoMapa = 420
 
 if (anchoMapa > anchoMaximoMapa) {
     anchoMapa = anchoMaximoMapa
 }
 
-alturaBuscada = anchoMapa*340 / 520
+alturaBuscada = anchoMapa*340 / 420
 
-mapa.width = anchoMapa - 20
+mapa.width = anchoMapa - 40
 mapa.height = alturaBuscada
 
 class Mokepon {
