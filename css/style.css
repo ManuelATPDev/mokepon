@@ -62,13 +62,11 @@ label {
     font-weight: bold;
     background: #0802A3;
     border-radius: 20px;
-    width: 450px;
+    width: 250px;
     padding: 20px;
     margin: 10px;
     display: grid;
-    grid-template-columns: 50% 50%;
     justify-items: center;
-    align-items: center;
 }
 
 #mensajes {
