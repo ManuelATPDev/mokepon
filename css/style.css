@@ -202,6 +202,9 @@ button {
     background-color: #ff9900;
 }
 
+img {
+    user-select: none;
+}
 
 #boton-reiniciar {
     background-color: #00cc00;
@@ -234,6 +237,14 @@ button {
         display: flex;
         flex-direction: column;
         gap: 10px;
+    }
+
+    .texto {
+        width: 280px;
+    }
+    
+    .reglas {
+        width: 300px;
     }
 
     button {
