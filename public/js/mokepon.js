@@ -55,15 +55,15 @@ let mapaBackground = new Image()
 mapaBackground.src = './assets/mokemap.png'
 let alturaBuscada
 let anchoMapa = window.innerWidth - 20
-const anchoMaximoMapa = 520
+const anchoMaximoMapa = 420
 
 if (anchoMapa > anchoMaximoMapa) {
     anchoMapa = anchoMaximoMapa
 }
 
-alturaBuscada = anchoMapa*340 / 520
+alturaBuscada = anchoMapa*340 / 420
 
-mapa.width = anchoMapa - 20
+mapa.width = anchoMapa - 40
 mapa.height = alturaBuscada
 
 class Mokepon {
@@ -187,10 +187,6 @@ function unirseAlJuego() {
 }
 
 function seleccionarMascotaJugador(){
-    sectionSeleccionarMascota.style.display = "none"
-
-    sectionVerMapa.style.display = "flex"
-
     const mascotaSeleccionada = document.querySelector('input[name="mascota"]:checked');
     
     if(mascotaSeleccionada) {
@@ -207,6 +203,10 @@ function seleccionarMascotaJugador(){
             spanMascotaJugador.innerHTML = inputHydrax.id
             mascotaJugador = inputHydrax.id
         }
+        
+        sectionSeleccionarMascota.style.display = "none"
+
+        sectionVerMapa.style.display = "flex"
 
         iniciarMapa()
         extraerAtaques(mascotaJugador)
@@ -215,9 +215,6 @@ function seleccionarMascotaJugador(){
         seleccionarMokepon(mascotaJugador)
     } else{
         alert('Debes seleccionar una mascota')
-        sectionSeleccionarMascota.style.display = "flex"
-        sectionAtaque.style.display = "none"
-        sectionVerMapa.style.display = "none"
     }
 }
 
@@ -315,27 +312,6 @@ function seleccionarMascotaEnemigo(enemigo){
     spanMascotaEnemigo.innerHTML = enemigo.nombre
     ataquesMokeponEnemigo = enemigo.ataques
     secuenciaAtaque()
-}
-
-
-function ataqueAleatorioEnemigo(){
-    let ataqueAleatorio = aleatorio(0, ataquesMokeponEnemigo.length - 1)
-
-    if (ataqueAleatorio == 0 || ataqueAleatorio == 1) {
-        ataqueEnemigo.push('FUEGO')
-    } else if (ataqueAleatorio == 3 || ataqueAleatorio == 4) {
-        ataqueEnemigo.push('AGUA')
-    } else {
-        ataqueEnemigo.push('TIERRA')
-    }
-
-    iniciarCombate()
-}
-
-function iniciarCombate() {
-    if (ataqueJugador.length == 5) {
-        combate()
-    }
 }
 
 function combate(){
@@ -476,21 +452,23 @@ function enviarPosicion(x, y) {
 }
 
 function moverArriba() {
+    event.preventDefault();
     mokeponSeleccionadoJugador.velocidadY = -5
 }
 
 function moverDerecha() {
+    event.preventDefault();
     mokeponSeleccionadoJugador.velocidadX = 5
 }
 
 function moverIzquierda() {
+    event.preventDefault();
     mokeponSeleccionadoJugador.velocidadX = -5
 }
 
 function moverAbajo() {
+    event.preventDefault();
     mokeponSeleccionadoJugador.velocidadY = 5
-
-    
 }
 
 function detenerMovimiento() {

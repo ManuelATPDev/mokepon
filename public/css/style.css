@@ -29,6 +29,12 @@ label {
     text-align: center;
 }
 
+.titulo-mapa {
+    color: black;
+    font-size: 40px; /** Se trabaja con multiplos de 4**/
+    text-align: center;
+}
+
 .subtitulo {
     text-align: center;
     color: black;
@@ -56,13 +62,11 @@ label {
     font-weight: bold;
     background: #0802A3;
     border-radius: 20px;
-    width: 450px;
+    width: 220px;
     padding: 20px;
     margin: 10px;
     display: grid;
-    grid-template-columns: 50% 50%;
     justify-items: center;
-    align-items: center;
 }
 
 #mensajes {
@@ -166,6 +170,7 @@ input:checked+label::after,
 }
 
 .cruceta {
+    user-select: none;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -202,7 +207,6 @@ button {
     background-color: #ff9900;
 }
 
-
 #boton-reiniciar {
     background-color: #00cc00;
 }
@@ -234,6 +238,15 @@ button {
         display: flex;
         flex-direction: column;
         gap: 10px;
+    }
+
+    .titulo {
+        margin-block-start: 0.8em;
+        margin-block-end: 0em;
+    }
+
+    .texto {
+        width: 280px;
     }
 
     button {

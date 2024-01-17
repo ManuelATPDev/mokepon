@@ -3,6 +3,8 @@ const cors = require("cors") //importar la libreria de cors
 
 const app = express() //instancia del servidor
 
+//app.use(express.static('public'))
+
 app.use(cors()) //habilitar el uso de cors y evitar errores
 app.use(express.json()) //habilitar el uso de json a traves de post
 
