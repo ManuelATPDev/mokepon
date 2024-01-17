@@ -401,21 +401,23 @@ function dibujarCanvas(){
 }
 
 function moverArriba() {
+    event.preventDefault();
     mokeponSeleccionadoJugador.velocidadY = -5
 }
 
 function moverDerecha() {
+    event.preventDefault();
     mokeponSeleccionadoJugador.velocidadX = 5
 }
 
 function moverIzquierda() {
+    event.preventDefault();
     mokeponSeleccionadoJugador.velocidadX = -5
 }
 
 function moverAbajo() {
+    event.preventDefault();
     mokeponSeleccionadoJugador.velocidadY = 5
-
-    
 }
 
 function detenerMovimiento() {
