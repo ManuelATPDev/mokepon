@@ -29,6 +29,12 @@ label {
     text-align: center;
 }
 
+.titulo-mapa {
+    color: black;
+    font-size: 40px; /** Se trabaja con multiplos de 4**/
+    text-align: center;
+}
+
 .subtitulo {
     text-align: center;
     color: black;
@@ -237,6 +243,11 @@ img {
         display: flex;
         flex-direction: column;
         gap: 10px;
+    }
+
+    .titulo {
+        margin-block-start: 0.8em;
+        margin-block-end: 0em;
     }
 
     .texto {
